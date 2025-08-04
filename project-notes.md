@@ -241,14 +241,17 @@
 - Started tutorial
 - Read through tutorial overview
 - Started with Step 4 - Set up development environment
-- Began implementing the basic WebGPU setup
+- Began implementing the basic WebGPU setup.
+- Successfully set up the WebGPU app and drew a black background.
+- Understood the concepts of the context, the device, the adapter, the encoder, the render pass, and the command buffer.
 
 ---
 
 ## 🎯 Current Focus
 
 **Next Steps:**
-
+- Drawing geometry (https://codelabs.developers.google.com/your-first-webgpu-app#3)
+- 
 
 **Learning Priority:**
 - Understanding the fundamental differences between WebGPU and WebGL
