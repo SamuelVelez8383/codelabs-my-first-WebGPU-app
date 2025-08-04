@@ -7,8 +7,8 @@
 - [x] **Step 1:** What you'll build
 - [x] **Step 2:** What you'll learn 
 - [x] **Step 3:** What you'll need
-- [ ] **Step 4:** Set up your development environment
-- [ ] **Step 5:** Initialize the project
+- [x] **Step 4:** Set up your development environment
+- [x] **Step 5:** Initialize the project
 - [ ] **Step 6:** Draw your first triangle
 - [ ] **Step 7:** Create the compute shader
 - [ ] **Step 8:** Create the render pipeline
@@ -115,7 +115,7 @@
 
 ### Immediate Tasks
 - [x] Read through tutorial overview
-- [ ] Set up basic HTML structure
+- [x] Set up basic HTML structure
 - [ ] Initialize WebGPU context
 - [ ] Create first triangle
 
