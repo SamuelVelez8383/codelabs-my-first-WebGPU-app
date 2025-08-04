@@ -48,6 +48,10 @@ export class Webviewer {
         
         const commandBuffer: GPUCommandBuffer = this.encoder.finish();
         this.device.queue.submit([commandBuffer]);
+
+        this.canvas.addEventListener("pointerdown", (event) => {
+            console.log("Pointer down", event);
+        });
     }
 
     // Getter methods for accessing WebGPU objects
