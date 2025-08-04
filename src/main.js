@@ -25,11 +25,11 @@ export class Webviewer {
             colorAttachments: [{
                 view: context.getCurrentTexture().createView(),
                 loadOp: "clear",
+                clearValue: { r: 0, g: 0, b: 0, a: 0 },
                 storeOp: "store",
             }]
         });
         pass.end();
-        const commandBuffer = this.encoder.finish();
-        this.device.queue.submit([commandBuffer]);
+        this.device.queue.submit([this.encoder.finish()]);
     }
 }
