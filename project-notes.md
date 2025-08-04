@@ -27,23 +27,48 @@
 
 ### WebGPU Fundamentals
 - **What is WebGPU?**
-  - Notes: *To be filled as we learn...*
+  - A graphics API for the web that allows the browser to access the GPU. Uses either Vulkan, Direct3D 12, or Metal as it's underlying powering system.
+  - Main graphics web standard intended to supersede WebGL.
+  - Seems to be part of the navigator API (?). Not very sure about this.
+  - API Access: WebGPU is accessed through navigator.gpu - this is the entry point to all WebGPU functionality. Always check if (navigator.gpu) for feature detection
+  - 
 
 - **WebGPU vs WebGL**
-  - Notes: *Coming from WebGL/Three.js background...*
+  - " One big difference in how WebGPU works compared to WebGL is that because canvas configuration is separate from device creation you can have any number of canvases that are all being rendered by a single device! This will make certain use cases, like multi-pane 3D editors, much easier to develop."
 
 ### Core WebGPU Concepts
 - **GPU Adapter & Device**
-  - Notes: *...*
+  - The adapter seems to be a representation of a specific part of GPU hardware
+  - Important to consider that sometimes an adapter might not be found. "If no appropriate adapters can be found, the returned adapter value might be null, so you want to handle that possibility. It might happen if the user's browser supports WebGPU but their GPU hardware doesn't have all the features necessary to use WebGPU. Most of the time it's OK to simply let the browser pick a default adapter, as you do here, but for more advanced needs there are arguments that can be passed to requestAdapter() that specify whether you want to use low-power or high-performance hardware on devices with multiple GPUs (like some laptops)."
+  - The GPUDevice is the main interface through which most of the interaction with the GPU happens.
+  - When requesting both the adapter and device, there is an option to pass in options to enable specific features or request higher limits. Not exploring them for now to focus on the essentials. 
+  - To render something, the context of the canvas and the device have to be connected. The canvas has to be configured to be used with the device. 
+  - Textures are the objects that WebGPU uses to store image data. 
+  - Each texture has a format. This allows the GPU to know how the data is laid out in memory.
+  - To use the something with WebGPU, an encoder needs to be created so to provide commands to the GPU.
+  - The encoder is used to perform rendering actions in the GPU.
+
+
+  
+  
 
 - **Buffers & Memory Management**
-  - Notes: *...*
+  - The format selected for the canvas affects how efficiently it can draw the images from the textures.
+  - Important to use the device's preferred format. There could be exceptions (?)
+
 
 - **Shaders (Vertex, Fragment, Compute)**
   - Notes: *...*
 
 - **Render Pipelines**
-  - Notes: *...*
+  - Texture saves the data/image that the render pass draws.
+  - The render pass is the drawing session, the action on the GPU, and stores the output on the texture.
+  - Calling the `encoder.beginRenderPass` and `renderPass.end` methods doesn't do anything on the GPU but records steps that will be executed later on. 
+  - The `GPUCommandBuffer` is an opaque handler to the recorded commands.
+  - So to finish recording GPU actions (render passes), the command buffer has to be created by `encoder.finish()`.
+  - And to submit those actions, `device.queue.submit([commandBuffer]);`
+  - A command buffer can only be used once. There's no point on holding on to it.
+
 
 - **Compute Pipelines**
   - Notes: *...*
@@ -197,7 +222,7 @@
 ## 🐛 Troubleshooting & Issues
 
 ### Common Issues
-- *To be documented as encountered...*
+- Not all browsers could have support for WebGPU as is the case with WebGL, even though it has been around for a while. It is important to check for support before starting the application. 
 
 ### Browser Compatibility
 - *Notes on WebGPU support across browsers...*
@@ -210,19 +235,20 @@
 ## 📝 Session Notes
 
 ### Session 1 - Project Setup
-**Date:** *Today*
+**Date:** 08/04/2025
 - Created project structure
 - Set up command center (this file)
-- Ready to begin tutorial
+- Started tutorial
+- Read through tutorial overview
+- Started with Step 4 - Set up development environment
+- Began implementing the basic WebGPU setup
 
 ---
 
 ## 🎯 Current Focus
 
 **Next Steps:**
-1. Read through tutorial overview
-2. Start with Step 4 - Set up development environment
-3. Begin implementing the basic WebGPU setup
+
 
 **Learning Priority:**
 - Understanding the fundamental differences between WebGPU and WebGL
@@ -236,4 +262,4 @@
 
 ---
 
-*Last Updated: Today*
+*Last Updated: 08/04/2025*
